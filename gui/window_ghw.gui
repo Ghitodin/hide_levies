@@ -1531,7 +1531,7 @@ window = {
 										}
 
 										text_single = {
-											visible = no # HIDE_LIVIES MOD
+											visible = no # THE MOD
 											text = "GHW_MILITARY_STRENGTH"
 											layoutpolicy_horizontal = expanding
 										}
@@ -1539,8 +1539,8 @@ window = {
 										hbox = {
 											layoutpolicy_horizontal = expanding
 
-											soldiers_and_quality_small = {
-												visible = no # HIDE_LIVIES MOD
+											hbox_soldiers_and_quality_small = {
+												visible = no # THE MOD
 												datacontext = "[GreatHolyWarWindow.GetArmyComposition( Character.Self )]"
 											}
 											expand = {}
@@ -1641,7 +1641,7 @@ window = {
 										}
 
 										text_single = {
-											visible = no # HIDE_LIVIES MOD
+											visible = no # THE MOD
 											text = "GHW_MILITARY_STRENGTH"
 											layoutpolicy_horizontal = expanding
 										}
@@ -1649,8 +1649,8 @@ window = {
 										hbox = {
 											layoutpolicy_horizontal = expanding
 
-											soldiers_and_quality_small = {
-												visible = no # HIDE_LIVIES MOD
+											hbox_soldiers_and_quality_small = {
+												visible = no # THE MOD
 												datacontext = "[GreatHolyWarWindow.GetArmyComposition( Character.Self )]"
 											}
 											expand = {}

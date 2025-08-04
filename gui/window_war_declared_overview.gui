@@ -95,7 +95,7 @@ window = {
 
 				strength_balance = {
 					name = "strength_balance"
-					visible = no # HIDE_LIVIES MOD
+					visible = no # THE MOD
 					datacontext = "[WarDeclaredOverviewWindow.GetMilitaryStrengthInfo]"
 				}
 			}

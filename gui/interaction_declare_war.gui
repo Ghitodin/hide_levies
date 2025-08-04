@@ -7,8 +7,8 @@ window = {
 	name = "declare_war_window"
 	datacontext = "[DeclareWarInteractionWindow.GetCharacterInteractionConfirmationWindow]"
 	parentanchor = top|right
-	position = { -15 90 }
-	size = { 640 970 } #1020
+	position = { -15 70 }
+	size = { 640 980 } #1020
 	allow_outside = yes
 	movable = no
 	layer = middle
@@ -92,7 +92,7 @@ window = {
 			widget = {
 
 				layoutpolicy_horizontal = expanding
-				size = { 0 220 }
+				size = { 0 192 }
 
 				background = {
 					using = Background_Area_Dark
@@ -105,7 +105,7 @@ window = {
 
 					vbox = {
 						datacontext = "[DeclareWarInteractionWindow.GetMilitaryStrengthInfo]"
-						visible = no # HIDE_LIVIES
+						visible = no # THE MOD
 
 						
 						
@@ -128,7 +128,7 @@ window = {
 									using = Background_Area_Dark
 								}
 
-								soldiers_and_quality_small = {
+								hbox_soldiers_and_quality_small = {
 									datacontext = "[DeclareWarInteractionWindow.GetAttackerCharacter]"
 									datacontext = "[CharacterItem.GetComposition]"
 									layoutpolicy_vertical = expanding
@@ -159,7 +159,7 @@ window = {
 									using = Background_Area_Dark
 								}
 
-								soldiers_and_quality_small = {
+								hbox_soldiers_and_quality_small = {
 									datacontext = "[DeclareWarInteractionWindow.GetDefenderCharacter]"
 									datacontext = "[CharacterItem.GetComposition]"
 									layoutpolicy_vertical = expanding
@@ -174,7 +174,7 @@ window = {
 
 						hbox = {
 							name = "gold"
-							spacing = 80
+							spacing = 60
 
 							character_gold = {
 								name = "your_gold"
@@ -205,10 +205,9 @@ window = {
 
 						text_multi = {
 							name = "comparison_text"
-							margin_top = 16
 							text = "[DeclareWarInteractionWindow.GetMilitaryStrength]"
 							autoresize = yes
-							max_width = 210
+							max_width = 200
 							align = center
 						}
 						expand = {}
@@ -221,7 +220,7 @@ window = {
 
 					hbox = {
 						alwaystransparent = yes
-						margin = { 10 6 }
+						margin = { 10 -8 }
 
 						declare_war_character_portrait = {
 							name = "player_character"
@@ -406,7 +405,7 @@ window = {
 												text_single = {
 													name = "text"
 													layoutpolicy_horizontal = expanding
-													text = "[CasusBelliTitleItem.GetName]"
+													text = "[CasusBelliTitleItem.GetName|U]"
 													autoresize = no
 													default_format = "#high"
 													align = nobaseline
@@ -496,7 +495,7 @@ window = {
 						name = "war_outcome_info"
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = fixed
-						size = {-1 160}
+						size = {-1 120}
 
 						blockoverride "scrollbox_content"
 						{
@@ -528,7 +527,7 @@ window = {
 											name = "main_end_war_effect"
 											layoutpolicy_horizontal = expanding
 											autoresize = yes
-											max_width = 320
+											max_width = 500
 
 											default_format = "#high"
 											text = "[DeclareWarInteractionWindow.GetCurrentTabMainOutputDescription]"
@@ -611,13 +610,9 @@ window = {
 							margin_top = 2
 							margin_bottom = -5
 
-							warning_icon = {
-								size = { 25 25 }
-							}
-
 							text_multi = {
 								text = "[DeclareWarInteractionWindow.WriteAdditionalWarningMessage]"
-								max_width = 350
+								max_width = 532
 								autoresize = yes
 							}
 						}
@@ -664,11 +659,14 @@ window = {
 				vbox_interaction_options = {
 					visible = "[DeclareWarInteractionWindow.HasSelectedCasusBelli]"
 					layoutpolicy_horizontal = expanding
+					blockoverride "checkbox_on_click"
+					{
+						onclick = "[DeclareWarInteractionWindow.ToggleHookCheckbox]" 
+					}
 				}
 
 				vbox = {
 					layoutpolicy_horizontal = expanding
-					margin_top = 10
 
 					### COST
 					declare_war_cost = {}
@@ -677,12 +675,13 @@ window = {
 
 			}
 
-			hbox = {
-				margin_top = 4
-				margin_bottom = 5
+			widget = {
+				size = { 0 60 }
+				layoutpolicy_horizontal = expanding
 
-				hbox = {
+				container = {
 					name = "tutorial_highlight_declare_war_send_button"
+					parentanchor = center
 
 					button_standard_big = {
 						name = "send_button"
@@ -713,6 +712,12 @@ window = {
 						}
 					}
 				}
+
+				button_toggle_companion_ai = {
+					using = tooltip_nw
+					parentanchor = center
+					position = { 150 0 }
+				}		
 			}
 		}
 	}
@@ -797,7 +802,7 @@ window = {
 
 									hbox = {
 										layoutpolicy_horizontal = expanding
-										visible = no # HIDE_LIVIES
+										visible = no # THE MOD
 
 										text_single = {
 											name = "ally_military_strength_text"
@@ -893,6 +898,19 @@ types DeclareWarTypes
 				raw_text = "@dynasty_prestige_icon![DeclareWarInteractionWindow.GetSpecificCost( 'renown' )|0]"
 				align = nobaseline
 				using = Font_Size_Big
+				default_format = "#high"
+
+				tooltipwidget = { widget_value_breakdown_tooltip = {} }
+			}
+
+			text_single = {
+				name = "influence"
+				datacontext = "[DeclareWarInteractionWindow.GetCostBreakdown( 'influence' )]"
+				visible = "[NotEqualTo_CFixedPoint( DeclareWarInteractionWindow.GetSpecificCost( 'influence' ), '(CFixedPoint)0' )]"
+
+				raw_text = "@influence_icon![DeclareWarInteractionWindow.GetSpecificCost( 'influence' )|0]"
+				using = Font_Size_Big
+				align = nobaseline
 				default_format = "#high"
 
 				tooltipwidget = { widget_value_breakdown_tooltip = {} }

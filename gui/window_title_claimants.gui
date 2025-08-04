@@ -5,7 +5,7 @@
 window = {
 	name = "claimants_window"
 	widgetanchor = top
-	size = { 580 90% }
+	size = { 580 90% } # X Position is taken from the template title_view_window_side_pop_out
 	resizable = no
 	layer = middle
 
@@ -143,7 +143,7 @@ window = {
 											}
 
 											hbox = {
-												visible = "0" # HIDE_LIVIES
+												visible = "0" # THE MOD
 												layoutpolicy_horizontal = expanding
 												margin_left = -10
 												margin_top = 10
