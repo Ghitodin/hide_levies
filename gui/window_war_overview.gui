@@ -1,4 +1,4 @@
-window = {
+﻿window = {
 	gfxtype = windowgfx
 	name = "war_overview_window"
 	widgetid = "war_overview_window"
@@ -437,18 +437,18 @@ window = {
 								}
 							}
 
-							text_single = { 
+							text_single = {
 								layoutpolicy_horizontal = expanding
-								text = "[WarOverviewWindow.GetWarStanceName( WarOverviewWindow.GetLeftSideLeaderItem.IsAttacker )]" 
-								tooltip = "[WarOverviewWindow.GetWarStanceDesc( WarOverviewWindow.GetLeftSideLeaderItem.IsAttacker )]" 
-								using = Font_Size_Medium 
+								text = "[WarOverviewWindow.GetWarStanceName( WarOverviewWindow.GetLeftSideLeaderItem.IsAttacker )]"
+								tooltip = "[WarOverviewWindow.GetWarStanceDesc( WarOverviewWindow.GetLeftSideLeaderItem.IsAttacker )]"
+								using = Font_Size_Medium
 								default_format = "#high"
-								align = nobaseline 
-								autoresize = yes 
+								align = nobaseline
+								autoresize = yes
 								max_width = 230
 								margin_left = 7
 								margin_bottom = 5
-							} 
+							}
 
 							vbox = {
 								visible = no # THE MOD
@@ -574,7 +574,69 @@ window = {
 							}
 						}
 
-						expand = {}
+						# interactions
+						hbox = {
+							layoutpolicy_horizontal = expanding
+							layoutpolicy_vertical = expanding
+							margin_top = 10
+							spacing = 6
+
+							hbox = {
+								visible = "[And( ObjectsEqual( WarOverviewWindow.GetRightSideLeaderItem.GetCharacter.GetFaith, GetPlayer.GetFaith ), WarOverviewWindow.GetLeftSideLeaderItem.GetCharacter.IsLocalPlayer )]"
+								layoutpolicy_horizontal = expanding
+								spacing = 6
+
+								expand = {}
+
+								container_single_interaction = {
+									blockoverride "interaction_name" {
+										name = "request_white_peace_interaction"
+									}
+
+									blockoverride "button_round_interaction" {
+										button_round_interaction = {
+
+											blockoverride "icon" {}
+
+											blockoverride "interaction_size" {
+												size = { 46 46 }
+											}
+
+											button_icon_highlight = {
+												parentanchor = center
+												position = { 0 1 }
+												size = { 30 30 }
+												texture = "gfx/interface/icons/flat_icons/request_white_peace_interaction.dds"
+											}
+										}
+									}
+								}
+
+								container_single_interaction = {
+									blockoverride "interaction_name" {
+										name = "request_victory_interaction"
+									}
+
+									blockoverride "button_round_interaction" {
+										button_round_interaction = {
+
+											blockoverride "icon" {}
+
+											blockoverride "interaction_size" {
+												size = { 46 46 }
+											}
+
+											button_icon_highlight = {
+												parentanchor = center
+												position = { 0 1 }
+												size = { 30 30 }
+												texture = "gfx/interface/icons/flat_icons/request_victory_interaction.dds"
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -643,8 +705,7 @@ window = {
 
 									blockoverride "portrait_button_template_tooltip"
 									{
-										# HIDE_LIVIES:
-										#tooltip = "[WarParticipantItem.GetParticipantTooltip]" # HIDE_LIVIES MOD
+										tooltip = "[WarParticipantItem.GetParticipantTooltip]"
 									}
 
 
@@ -799,18 +860,18 @@ window = {
 								expand = {}
 							}
 
-							text_single = { 
-								layoutpolicy_horizontal = expanding 
-								text = "[WarOverviewWindow.GetWarStanceName( WarOverviewWindow.GetRightSideLeaderItem.IsAttacker )]" 
-								tooltip = "[WarOverviewWindow.GetWarStanceDesc( WarOverviewWindow.GetRightSideLeaderItem.IsAttacker )]" 
+							text_single = {
+								layoutpolicy_horizontal = expanding
+								text = "[WarOverviewWindow.GetWarStanceName( WarOverviewWindow.GetRightSideLeaderItem.IsAttacker )]"
+								tooltip = "[WarOverviewWindow.GetWarStanceDesc( WarOverviewWindow.GetRightSideLeaderItem.IsAttacker )]"
 								using = Font_Size_Medium
 								default_format = "#high"
-								align = nobaseline 
-								autoresize = yes 
-								max_width = 230 
+								align = nobaseline
+								autoresize = yes
+								max_width = 230
 								margin_left = 7
 								margin_bottom = 5
-							} 
+							}
 
 							hbox = {
 								visible = no # THE MOD
@@ -1290,6 +1351,8 @@ window = {
 						### CENTER PANEL WAR SCORE DETAILS ###
 						war_overview_center_panel_war_score_details = {}
 
+						war_overview_center_panel_losses = {}
+
 						### CENTER PANEL CONTRIBUTION AS ALLIED ###
 						war_overview_center_panel_contribution_as_allied = {}
 					}
@@ -1314,6 +1377,7 @@ window = {
 							size = { 0 50 }
 							margin_left = 35
 							mirror = vertical
+							shortcut = "tab_1"
 
 							text = "TAB_DEFEAT"
 
@@ -1335,6 +1399,7 @@ window = {
 							visible = "[WarOverviewWindow.GetWar.GetActiveCB.GetType.IsWhitePeacePossible]"
 							margin_left = 35
 							mirror = vertical
+							shortcut = "tab_2"
 
 							text = "TAB_WHITE_PEACE"
 
@@ -1355,6 +1420,7 @@ window = {
 							size = { 0 50 }
 							margin_left = 35
 							mirror = vertical
+							shortcut = "[Select_CString(WarOverviewWindow.GetWar.GetActiveCB.GetType.IsWhitePeacePossible, 'tab_3', 'tab_2')]"
 
 							text = "TAB_VICTORY"
 
@@ -1419,6 +1485,12 @@ window = {
 				parentanchor = bottom|right
 				widgetanchor = bottom|right
 			}
+		}
+
+		error_horse = {
+			parentanchor = bottom|left
+			position = { 610 -280 }
+			visible = "[And( Not( IsPauseMenuShown ), Not(ReleaseMode) )]"
 		}
 	}
 
@@ -2515,6 +2587,145 @@ types WarOverView
 		}
 	}
 
+	type war_overview_center_panel_losses = widget {
+		layoutpolicy_horizontal = expanding
+		size = { 0 40 }
+		alwaystransparent = no
+
+		background = {
+			using = Background_Area_Dark
+		}
+
+		hbox = {
+			block "margins" {
+				margin = { 10 5 }
+			}
+
+			hbox_war_casualties_side = {
+				block "left_context" {
+					datacontext = "[WarOverviewWindow.GetLeftSide]"
+				}
+			}
+
+			block "losses" {
+				text_single = {
+					default_format = "#weak"
+					text = "LOSSES_WAR_OVERVIEW"
+					max_width = 150
+					layoutpolicy_horizontal = expanding
+					align = nobaseline|center
+				}
+			}
+
+			hbox_war_casualties_side = {
+				block "right_context" {
+					datacontext = "[WarOverviewWindow.GetRightSide]"
+				}
+				blockoverride "align" {
+					align = nobaseline|right
+				}
+				blockoverride "right" {
+					righttoleft = yes
+				}
+				blockoverride "mirror" {
+					mirror = horizontal
+				}
+				blockoverride "no_mirror" {}
+			}
+		}
+	}
+
+	type hbox_war_casualties_side = hbox {
+		block "spacing" {
+			spacing = 5
+		}
+		block "right" {}
+		hbox = {
+			block "right" {}
+			spacing = 5
+			tooltip = "[WarSide.GetParticipantLossesTooltip]"
+
+			icon_flat_standard_red = {
+				texture = "gfx/interface/icons/flat_icons/army.dds"
+				block "size" {
+					size = { 30 30 }
+				}
+				enabled = "[NotZero(WarSide.GetBattleLosses)]"
+				block "no_mirror" {
+					mirror = horizontal
+				}
+			}
+
+			text_single = {
+				autoresize = no
+				default_format = "#n"
+				size = { 50 20 }
+				alpha = "[Select_float( NotZero(WarSide.GetBattleLosses), '(float)1.0', '(float)0.5' )]"
+				block "battle" {
+					raw_text = "[Select_CString(NotZero(WarSide.GetBattleLosses), '#n', '#low')] [WarSide.GetBattleLosses|*1]"
+				}
+				block "align" {
+					align = nobaseline
+				}
+			}
+		}
+
+		hbox = {
+			block "right" {}
+			spacing = 5
+			block "attrition_tt" {
+				tooltip = "ATTRITION_LOSSES_TT"
+			}
+			icon_flat_standard_red = {
+				texture = "gfx/interface/icons/flat_icons/prison_execute.dds"
+				block "size" {
+					size = { 28 28 }
+				}
+				enabled = "[NotZero(WarSide.GetAttritionLosses)]"
+			}
+			text_single = {
+				autoresize = no
+				size = { 50 20 }
+				default_format = "#n"
+				alpha = "[Select_float( NotZero(WarSide.GetAttritionLosses), '(float)1.0', '(float)0.5' )]"
+				block "attrition" {
+					raw_text = "[Select_CString(NotZero(WarSide.GetAttritionLosses), '#n', '#low')] [WarSide.GetAttritionLosses|*1]"
+				}
+				block "align" {
+					align = nobaseline
+				}
+			}
+		}
+
+		hbox = {
+			block "right" {}
+			spacing = 5
+			block "char_tt" {
+				tooltip = "[WarSide.GetCharacterLossesTooltip]"
+			}
+			icon_flat_standard_red = {
+				texture = "gfx/interface/icons/flat_icons/knight.dds"
+				block "size" {
+					size = { 30 30 }
+				}
+				enabled = "[NotZero(WarSide.GetCharactersLost)]"
+				block "mirror" {}
+			}
+			text_single = {
+				autoresize = no
+				size = { 35 20 }
+				# default_format = "[]"
+				# alpha = "[Select_float( NotZero(WarSide.GetCharactersLost), '(float)1.0', '(float)0.5' )]"
+				block "characters" {
+					raw_text = "[Select_CString(NotZero(WarSide.GetCharactersLost), '#n', '#low')] [WarSide.GetCharactersLost]"
+				}
+				block "align" {
+					align = nobaseline
+				}
+			}
+		}
+	}
+
 	type war_overview_center_panel_contribution_as_allied = hbox {
 		layoutpolicy_horizontal = expanding
 		margin = { 10 0 }
@@ -2837,11 +3048,6 @@ types WarOverView
 			text_single = {
 				layoutpolicy_horizontal = expanding
 				text = "WAR_OVERVIEW_HOSTAGES_DISALLOWED"
-				default_format = "#weak"
-			}
-			text_single = {
-				layoutpolicy_horizontal = expanding
-				text = "WAR_OVERVIEW_HOSTAGES_DISALLOWED_LANDLESS_ADVENTURER"
 				default_format = "#weak"
 			}
 		}
@@ -3569,10 +3775,13 @@ types WarOverView
 									}
 
 									hbox = {
+										name = "ai_acceptance"
+										visible = "[Not(HostageExchangeWindow.GetRecipient.IsPlayer)]"
+
 										### Will Accept ###
 										icon = {
-											visible = "[GreaterThan_CFixedPoint( HostageExchangeWindow.GetHostageAcceptanceValue( CharacterListItem.Self ), '(CFixedPoint)0' )]"
-											size = { 60 60 }
+											visible = "[HostageExchangeWindow.WouldPotentiallyAcceptHostage( CharacterListItem.Self )]"
+											size = { 45 45 }
 
 											texture = "gfx/interface/icons/symbols/icon_check.dds"
 
@@ -3582,8 +3791,8 @@ types WarOverView
 
 										### Will Not Accept ###
 										icon = {
-											visible = "[LessThanOrEqualTo_CFixedPoint( HostageExchangeWindow.GetHostageAcceptanceValue( CharacterListItem.Self ), '(CFixedPoint)0' )]"
-											size = { 60 60 }
+											visible = "[Not(HostageExchangeWindow.WouldPotentiallyAcceptHostage( CharacterListItem.Self ))]"
+											size = { 45 45 }
 
 											texture = "gfx/interface/icons/symbols/icon_cross.dds"
 

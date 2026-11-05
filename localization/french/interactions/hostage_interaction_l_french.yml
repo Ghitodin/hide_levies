@@ -72,7 +72,7 @@
  hostage_prestige_income_tt_past: "$hostage_prestige_income_tt$"
  hostage_prestige_renown_income_tt: "[CHARACTER.Custom('FR_le_Char_U_Pi')|U][CHARACTER.GetShortUIName|U] [Select_CString(CHARACTER.IsLocalPlayer,'gagnerez','gagnera')] du [prestige|El][prestige_i|E] et de la [dynasty_prestige|El][dynasty_prestige_i|E]"
  hostage_prestige_piety_renown_income_tt: "[CHARACTER.Custom('FR_le_Char_U_Pi')|U][CHARACTER.GetShortUIName|U] [Select_CString(CHARACTER.IsLocalPlayer,'gagnerez','gagnera')] du [prestige|El][prestige_i|E], de la [dynasty_prestige|El][dynasty_prestige_i|E] et de la [piety|El][piety_i|E]"
- hostage_prestige_income_loss_tt: "Perd du [prestige|El] [prestige_i|E]"
+ hostage_prestige_income_loss_tt: "Perd du [prestige|El][prestige_i|E]"
  hostage_prestige_renown_income_loss_tt: "Perd du [prestige|El][prestige_i|E] et de la [dynasty_prestige|El][dynasty_prestige_i|E]"
  hostage_prestige_piety_renown_income_loss_tt: "Perd du [prestige|El][prestige_i|E], de la [dynasty_prestige|El][dynasty_prestige_i|E] et de la [piety|El][piety_i|E]"
  warden_lower_title_tier_tt: "#weak [TARGET_CHARACTER.GetPrimaryTitle.GetNameNoTier] a un [title_tier|El] plus élevé que [CHARACTER.GetPrimaryTitle.GetNameNoTier]#!"
@@ -109,7 +109,6 @@
  HOSTAGE_RELATIVE_MILITARY_POWER_REASON: "Puissance militaire relative : $VALUE|=+0$"
  # THE MOD:
  HOSTAGE_ALLY_MILITARY_POWER_REASON: "Puissance militaire des [allies|El] : $VALUE|=+0$"
- # ------------------------
  HOSTAGE_AGE_REASON: "Âge de l’[hostage|El] : $VALUE|=+0$"
  HOSTAGE_CHILD_REASON: "L’[hostage|El] est un enfant : $VALUE|=+0$"
  HOSTAGE_OWN_CHILD_REASON: "L’[hostage|El]est l’enfant du [ruler|El] de [home_court|E] : $VALUE|=+0$"
@@ -123,7 +122,7 @@
  HOSTAGE_RANK_DIFFERENCE_REASON: "$RANK_DIFFERENCE_REASON$"
  HOSTAGE_RECIPIENT_EXISTING_TRUCE_REASON: "[recipient.Custom('FR_le_Char_U_Pi')|U][recipient.GetShortUIName|U] a déjà une [truce|El] avec [actor.Custom('FR_le_Char_U_Pi')][actor.GetShortUIName] : $VALUE|=+0$"
  HOSTAGE_CULTURAL_ACCEPTANCE_REASON: "[Concept('cultural_acceptance','Acceptation')|E] [recipient.GetCulture.GetName] de la culture [actor.GetCulture.GetName] : $VALUE|=+0$"
- HOSTAGE_FAITH_EVIL: "Les [recipient.GetFaith.GetAdherentNamePlural] considèrent que les [actor.GetFaith.GetAdherentNamePlural] sont [Concept('faith_evil','$game_concept_faith_evil$s')|E] : $VALUE|=+0$"
+ HOSTAGE_FAITH_EVIL: "Les [recipient.GetFaith.GetAdherentNamePlural] considèrent que les [actor.GetFaith.GetAdherentNamePlural] sont [Concept('faith_evil','$game_concept_faith_evil|q$s')|E] : $VALUE|=+0$"
  HOSTAGE_FAITH_HOSTILE: "Les [recipient.GetFaith.GetAdherentNamePlural] considèrent les [actor.GetFaith.GetAdherentNamePlural] comme [Concept('faith_hostile','hostiles')|E] : $VALUE|=+0$"
  HOSTAGE_FAITH_ASTRAY: "Les [recipient.GetFaith.GetAdherentNamePlural] considèrent les [actor.GetFaith.GetAdherentNamePlural] comme [Concept('faith_astray','dévoyés')|E] : $VALUE|=+0$"
  HOSTAGE_DISTANT_REALM_REASON: "Pays lointain : $VALUE|=+0$"

@@ -1,4 +1,4 @@
-window = {
+﻿window = {
 	name = "great_holy_war_window"
 	parentanchor = center
 	datacontext = "[GreatHolyWarWindow.GetGreatHolyWar]"
@@ -1384,6 +1384,7 @@ window = {
 					layoutpolicy_horizontal = expanding
 
 					button_tab = {
+						shortcut = "tab_1"
 						layoutpolicy_horizontal = expanding
 						onclick = "[GetVariableSystem.Set( 'ghw_tab', 'attackers' )]"
 						down = "[GetVariableSystem.HasValue( 'ghw_tab', 'attackers' )]"
@@ -1392,6 +1393,7 @@ window = {
 					}
 
 					button_tab = {
+						shortcut = "tab_2"
 						name = "tab_defenders"
 						layoutpolicy_horizontal = expanding
 						onclick = "[GetVariableSystem.Set( 'ghw_tab', 'defenders' )]"

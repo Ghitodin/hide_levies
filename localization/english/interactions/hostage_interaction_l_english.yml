@@ -109,7 +109,6 @@
  HOSTAGE_RELATIVE_MILITARY_POWER_REASON: "Relative Military Strength: $VALUE|=+0$"
  # THE MOD:
  HOSTAGE_ALLY_MILITARY_POWER_REASON: "[allies|E] Military Strength: $VALUE|=+0$"
- # ----------------------------------------------
  HOSTAGE_AGE_REASON: "[hostage|E] age: $VALUE|=+0$"
  HOSTAGE_CHILD_REASON: "[hostage|E] is a child: $VALUE|=+0$"
  HOSTAGE_OWN_CHILD_REASON: "[hostage|E] is [home_court|E] [rulerpossessive|E] child: $VALUE|=+0$"
