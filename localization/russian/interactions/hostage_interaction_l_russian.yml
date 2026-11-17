@@ -105,9 +105,7 @@
  HOSTAGE_RELATIVE_SUCCESSION_PLACE_REASON: "Относительное место [Concept( 'hostage', 'заложника' )|E] в [Concept( 'succession', 'очереди наследования' )|E]: $VALUE|=+0$"
  HOSTAGE_SEX_DIFFERENCE_REASON: "Разный пол [Concept( 'hostages', 'заложников' )|E]: $VALUE|=+0$"
  HOSTAGE_SUCCESSION_PLACE_REASON: "Место [Concept( 'hostage', 'заложника' )|E] в [Concept( 'line_of_succession', 'очереди наследования' )|E]: $VALUE|=+0$"
- # THE MOD:
  HOSTAGE_RELATIVE_MILITARY_POWER_REASON: "Относительная военная мощь: $VALUE|=+0$"
- # THE MOD:
  HOSTAGE_ALLY_MILITARY_POWER_REASON: "Военная мощь [Concept( 'allies', 'союзников' )|E]: $VALUE|=+0$"
  HOSTAGE_AGE_REASON: "Возраст [Concept( 'hostage', 'заложника' )|E]: $VALUE|=+0$"
  HOSTAGE_CHILD_REASON: "[hostage|E] — ребенок: $VALUE|=+0$"

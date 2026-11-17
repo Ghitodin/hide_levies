@@ -105,9 +105,7 @@
  HOSTAGE_RELATIVE_SUCCESSION_PLACE_REASON: "Places relatives des [hostages|El] dans la [succession|El] : $VALUE|=+0$"
  HOSTAGE_SEX_DIFFERENCE_REASON: "Les [hostages|El] sont de sexes différents : $VALUE|=+0$"
  HOSTAGE_SUCCESSION_PLACE_REASON: "La place de l’[hostage|El] dans la [line_of_succession|El] : $VALUE|=+0$"
- # THE MOD:
  HOSTAGE_RELATIVE_MILITARY_POWER_REASON: "Puissance militaire relative : $VALUE|=+0$"
- # THE MOD:
  HOSTAGE_ALLY_MILITARY_POWER_REASON: "Puissance militaire des [allies|El] : $VALUE|=+0$"
  HOSTAGE_AGE_REASON: "Âge de l’[hostage|El] : $VALUE|=+0$"
  HOSTAGE_CHILD_REASON: "L’[hostage|El] est un enfant : $VALUE|=+0$"
